@@ -282,7 +282,7 @@ const calculateRevenue = async () => {
   const result = await OrderModel.aggregate([
     {
       $group: {
-        _id: null,
+        _id:  null,
         totalRevenue: { $sum: '$totalPrice' },
       },
     },

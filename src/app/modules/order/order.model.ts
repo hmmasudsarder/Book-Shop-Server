@@ -11,7 +11,7 @@ const orderSchema = new Schema({
     status: { type: String, enum: ["Pending","Shipped" ,"Delivered", "Paid",  "Completed", "Cancelled"], default: 'Pending' },
     _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     transaction: {
-      id: String,
+      id: Number,
       transactionStatus: String,
       bank_status: String,
       sp_code: String,
