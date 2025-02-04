@@ -71,7 +71,7 @@ const createOrderInToDB = async (orderData: any, client_ip: string) => {
         },
       },
       { new: true }
-    ) as mongoose.Document<unknown,  IOrder> & IOrder & { _id: mongoose.Types.ObjectId };
+    ) as mongoose.Document<unknown, object, IOrder> & IOrder & { _id: mongoose.Types.ObjectId } & { __v: number };
   }
   // return  payment.checkout_url;
   return { order, payment };
@@ -278,7 +278,7 @@ const updateOrderStatusInDB = async (
 };
 
 // Calculate Revenue from Orders using Aggregation
-const calculateRevenue = async () => {
+const calculateRevenue = async (): Promise<{ totalRevenue: number }> => {
   const result = await OrderModel.aggregate([
     {
       $group: {
@@ -287,8 +287,10 @@ const calculateRevenue = async () => {
       },
     },
   ]);
-  return result[0]?.totalRevenue || 0;
+
+  return result[0];
 };
+
 
 
 

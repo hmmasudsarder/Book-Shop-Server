@@ -117,18 +117,17 @@ const updateOrderStatus = catchAsync(async (req: Request, res: Response) => {
 
 
 // get Revenue
-const getRevenueData = async (req: Request, res: Response,next:NextFunction) => {
+const getRevenueData = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const totalRevenue = await OrderServices.calculateRevenue();
-    
+    console.log(totalRevenue);
     res.status(200).json({
       message: 'revenue calculated successfully',
       status: true,
-      data: { totalRevenue },
+      data: totalRevenue.totalRevenue,
     });
   } catch (error) {
-    // res.status(500).json({ message: 'fail calculating revenue', status: false, error });
-    next(error)
+    next(error);
   }
 };
 
