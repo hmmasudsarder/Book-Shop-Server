@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 import { IOrder } from "./order.interface";
 
 
@@ -9,6 +9,7 @@ const orderSchema = new Schema({
     quantity: { type: Number, required: true, min: 1 },
     totalPrice: { type: Number, required: true },
     status: { type: String, enum: ["Pending","Shipped" ,"Delivered", "Paid",  "Completed", "Cancelled"], default: 'Pending' },
+    _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     transaction: {
       id: String,
       transactionStatus: String,

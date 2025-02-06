@@ -278,7 +278,7 @@ const updateOrderStatusInDB = async (
 };
 
 // Calculate Revenue from Orders using Aggregation
-const calculateRevenue = async (): Promise<{ totalRevenue: number }> => {
+const calculateRevenue = async () => {
   const result = await OrderModel.aggregate([
     {
       $group: {
@@ -287,12 +287,8 @@ const calculateRevenue = async (): Promise<{ totalRevenue: number }> => {
       },
     },
   ]);
-
-  return result[0];
+  return result[0]?.totalRevenue || 0; // Returns a number
 };
-
-
-
 
 
 

@@ -120,16 +120,18 @@ const updateOrderStatus = catchAsync(async (req: Request, res: Response) => {
 const getRevenueData = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const totalRevenue = await OrderServices.calculateRevenue();
-    console.log(totalRevenue);
+    console.log(totalRevenue); // Now it logs a number instead of an object
+
     res.status(200).json({
-      message: 'revenue calculated successfully',
+      message: 'Revenue calculated successfully',
       status: true,
-      data: totalRevenue.totalRevenue,
+      data: totalRevenue, // Directly send the number
     });
   } catch (error) {
     next(error);
   }
 };
+
 
 export const OrderControllers = {
   createOrder,
