@@ -45,7 +45,7 @@ const createProduct = async (
 // };
 
 const getAllProducts  = catchAsync(async (req: Request,res: Response, ) => {
-  console.log(req.query);
+  // console.log(req.query);
   // const result = await BlogServices.getAllBlogs(req.query);
   const result =await ProductServices.getAllProductToDB(req.query)
 

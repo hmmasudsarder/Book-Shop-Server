@@ -12,9 +12,7 @@ class QueryBuilder<T> {
   search(searchableFields: string[]) {
     // const searchTerm = this?.query?.searchTerm;
     const searchTerm = this?.query?.search || this?.query?.searchTerm;
-    // console.log("thiss",this.query);
-    // console.log("search term:", searchTerm);
-    // console.log("searchable fields:", searchableFields);
+   
     if (searchTerm) {
       this.modelQuery = this.modelQuery.find({
         $or: searchableFields.map(
@@ -96,7 +94,7 @@ class QueryBuilder<T> {
     // add remaining fields to filters
     Object.assign(filters, queryObj);
   
-    console.log('Final filters for query:', filters);
+    // console.log('Final filters for query:', filters);
   
     // Apply filters to the MongoDB query
     this.modelQuery = this.modelQuery.find(filters as FilterQuery<T>);

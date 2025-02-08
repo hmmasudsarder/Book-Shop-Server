@@ -8,8 +8,7 @@ const addProductInToDB = async (product: Iproduct) => {
   return result;
 };
 
-const  getAllProductToDB = async (query: Record<string, unknown>) => {
-  console.log(query);
+const getAllProductToDB = async (query: Record<string, unknown>) => {
   const productQuery = new QueryBuilder(
     ProductModel.find(),
     query,
@@ -20,8 +19,7 @@ const  getAllProductToDB = async (query: Record<string, unknown>) => {
     .fields()
     .paginate()
 
-  const result = await  productQuery.modelQuery.exec();
-  console.log('Query Result:', result);
+  const result = await productQuery.modelQuery.exec();
 
   return result;
 };

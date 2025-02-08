@@ -49,7 +49,7 @@ const verifyPayment = catchAsync(async (req, res) => {
 
 
 const getUserOrders = catchAsync(async (req, res,) => {
-  console.log("this is order controller", req.user.email);
+  // console.log("this is order controller", req.user.email);
   const email = req.user.email;
   const result = await OrderServices.getUserOrdersFromDB(email)
 
@@ -77,7 +77,7 @@ const getAllOrders = catchAsync(async (req: Request, res: Response) => {
 // get order by id 
 const getOrderById = catchAsync(async (req: Request, res: Response) => {
   const orderId = req.params.id;
-  console.log(orderId);
+  // console.log(orderId);
   const result = await OrderServices.getOrderByIdFromDB(orderId);
 
   sendResponse(res, {
@@ -90,7 +90,7 @@ const getOrderById = catchAsync(async (req: Request, res: Response) => {
 
 // user cancel Order 
 const cancelOrder = catchAsync(async (req: Request, res: Response) => {
-  console.log('Cancel order request from:', req.user.email);
+  // console.log('Cancel order request from:', req.user.email);
   const email = req.user.email;
   const result = await OrderServices.cancelOrderInDB(req.params.orderId, email);
 
