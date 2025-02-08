@@ -3,7 +3,18 @@ export interface Iproduct {
     author: string;
     price: number;
     productImg?:string,
-    category: 'Mountain' | 'Road' | 'Hybrid' | 'Electric'| 'Gravel';
+    category: 'Fantasy'
+    | 'Science Fiction'
+    | 'Romance'
+    | 'Mystery/Thriller'
+    | 'Biography/Autobiography'
+    | 'Self-Help'
+    | 'History'
+    | 'Science'
+    | 'Business'
+    | 'Technology'
+    | 'Design'
+    | 'Children’s Books';
     description:string;
     quantity :number;
     inStock:boolean;
