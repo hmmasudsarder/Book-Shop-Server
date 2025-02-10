@@ -64,7 +64,7 @@ class QueryBuilder<T> {
 */
   filter() {
     const queryObj = { ...this.query };
-    console.log('constructed query object:', queryObj);
+    
   
     // Fields to exclude from filtering
     const excludeFields = [
