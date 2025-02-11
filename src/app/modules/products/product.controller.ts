@@ -19,35 +19,13 @@ const createProduct = async (
       data: result,
     });
   } catch (error) {
-    // res.status(400).json({
-    //   message: 'failed to create bike',
-    //   success: false,
-    //   error: err,
-    // });
     next(error);
   }
 };
 
-// get all product
-// const getAllProducts = async (req: Request,res: Response, next: NextFunction,) => {
-//   try {
-//     const searchTerm = req.query.searchTerm as string;
-//     const products = await ProductServices.getAllProductToDB(searchTerm);
-//     res.status(200).json({
-//       success: true,
-//       message: 'bike is retrieved successfully',
-//       data: products,
-//     });
-//   } catch (error) {
-//     // res.status(500).json({ message: 'Server error', success: false, error });
-//     next(error);
-//   }
-// };
 
-const getAllProducts  = catchAsync(async (req: Request,res: Response, ) => {
-  // console.log(req.query);
-  // const result = await BlogServices.getAllBlogs(req.query);
-  const result =await ProductServices.getAllProductToDB(req.query)
+const getAllProducts = catchAsync(async (req: Request, res: Response,) => {
+  const result = await ProductServices.getAllProductToDB(req.query)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -57,7 +35,7 @@ const getAllProducts  = catchAsync(async (req: Request,res: Response, ) => {
   });
 });
 // get single product by id
-const getProductById = async (req: Request,res: Response, next: NextFunction,): Promise<void> => {
+const getProductById = async (req: Request, res: Response, next: NextFunction,): Promise<void> => {
   try {
     const productId = req.params.id;
     const product = await ProductServices.getProductById(productId);
@@ -65,8 +43,6 @@ const getProductById = async (req: Request,res: Response, next: NextFunction,): 
 
     // If product is not found, return 404 error
     if (!product) {
-      //  res.status(404).json({ message: 'Product not found', success: false });
-      // throw new Error('Product not found');
       const error = new Error('Product not found');
       (error as any).status = 404;
       (error as any).success = false;
@@ -84,7 +60,7 @@ const getProductById = async (req: Request,res: Response, next: NextFunction,): 
 };
 
 // updated single product by id
-const updatedVProduct = async ( req: Request,res: Response,next: NextFunction,): Promise<void> => {
+const updatedVProduct = async (req: Request, res: Response, next: NextFunction,): Promise<void> => {
   try {
     const productId = req.params.id;
     const productData = req.body;
@@ -99,7 +75,7 @@ const updatedVProduct = async ( req: Request,res: Response,next: NextFunction,):
       (error as any).status = 404;
       (error as any).success = false;
       return next(error);
-      
+
     }
     res.json({
       message: 'product updated successfully',
@@ -107,7 +83,6 @@ const updatedVProduct = async ( req: Request,res: Response,next: NextFunction,):
       data: product,
     });
   } catch (error) {
-    // res.status(400).json({ message: 'update failed', success: false, error });
     next(error);
   }
 };
@@ -121,13 +96,11 @@ const deleteProduct = async (
     const productId = req.params.id;
     const product = await ProductServices.deletedProduct(productId);
     if (!product) {
-      // res.status(404).json({ message: 'Product not found', success: false });
-      // throw new Error('product not found ');
       const error = new Error('Product not found');
       (error as any).status = 404;
       (error as any).success = false;
       return next(error);
-      
+
     }
     res.json({
       message: 'product deleted successfully',
@@ -135,7 +108,6 @@ const deleteProduct = async (
       data: product,
     });
   } catch (error) {
-    // res.status(400).json({ message: 'delete failed', success: false, error });
     next(error);
   }
 };

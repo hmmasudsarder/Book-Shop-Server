@@ -3,8 +3,7 @@ import { Iproduct } from './product.interface';
 
 const productSchema = new Schema({
   name: { type: String, required: true },
-  brand: { type: String, required: true },
-  model: { type: String,  },
+  author: { type: String, required: true },
   price: { type: Number, required: true, min: 0 },
   productImg: { type: String },
   category: {
