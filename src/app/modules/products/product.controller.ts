@@ -15,7 +15,7 @@ const createProduct = async (
     const result = await ProductServices.addProductInToDB(product);
     res.status(200).json({
       success: true,
-      message: 'bike is created successfully',
+      message: 'book is created successfully',
       data: result,
     });
   } catch (error) {
@@ -52,7 +52,7 @@ const getAllProducts  = catchAsync(async (req: Request,res: Response, ) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'blog are retrieved successfully',
+    message: 'book are retrieved successfully',
     data: result,
   });
 });
