@@ -18,7 +18,7 @@ const makePaymentAsync = async ( paymentPayload: any): Promise<PaymentResponse> 
   return new Promise((resolve, reject) => {
     shurjopay.makePayment(
       paymentPayload,
-      (response: unknown) => resolve(response),
+      (response: PaymentResponse) => resolve(response),
       (error: any) => reject(error)
     );
   });

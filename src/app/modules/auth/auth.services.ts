@@ -58,14 +58,14 @@ const loginUser = async (payload: TLoginUser) => {
   const token = createToken(
     jwtPayload,
     config.jwt_access_secret as string,
-    config.jwt_access_expires_in as string,
+    config.jwt_access_expires_in as unknown as number,
   );
   console.log("create token::",token);
 
   const refreshToken = createToken(
     jwtPayload,
     config.jwt_refresh_secret as string,
-    config.jwt_refresh_expires_in as string,
+    config.jwt_refresh_expires_in as unknown as number,
   );
   
   return {
@@ -114,7 +114,7 @@ const refreshToken = async (token: string) => {
   const accessToken = createToken(
     jwtPayload,
     config.jwt_access_secret as string,
-    config.jwt_access_expires_in as string,
+    config.jwt_access_expires_in as unknown as number,
   );
 
   return {
