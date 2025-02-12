@@ -269,7 +269,12 @@ const updateOrderStatusInDB = async (
     | 'Delivered'
     | 'Canceled',
 ) => {
+ 
+  // if (!mongoose.Types.ObjectId.isValid(orderId)) {
+  //   throw new AppError(httpStatus.BAD_REQUEST, 'Invalid Order ID format');
+  // }
   const order = await OrderModel.findById(orderId);
+  
   if (!order) throw new AppError(httpStatus.NOT_FOUND, 'order not found');
 
   order.status = status;
@@ -282,13 +287,14 @@ const calculateRevenue = async () => {
   const result = await OrderModel.aggregate([
     {
       $group: {
-        _id:  null,
-        totalRevenue: { $sum: '$totalPrice' },
+        _id: null, // ✅ FIXED
+        totalRevenue: { $sum: "$totalPrice" },
       },
     },
   ]);
-  return result[0]?.totalRevenue || 0; // Returns a number
+  return result[0]?.totalRevenue || 0;
 };
+
 
 
 
