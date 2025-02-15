@@ -22,6 +22,17 @@ const blockUserByAdmin = async (id: string) => {
   return result;
 };
 
+ const getAllUserFromDb = async () => {
+
+  const result = await User.find()
+
+  return result;
+};
+
+
+
+
 export const userServices = {
-    blockUserByAdmin
+    blockUserByAdmin,
+    getAllUserFromDb
 };

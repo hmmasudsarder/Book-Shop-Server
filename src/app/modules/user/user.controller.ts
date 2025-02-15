@@ -16,6 +16,19 @@ const blockUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getAllUser= catchAsync(async (req: Request, res: Response) => {
+ 
+  const result= await userServices.getAllUserFromDb();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'user  retrieved  successfully!',
+    data:result,
+  });
+});
+
 export const userController = {
   blockUser,
+  getAllUser
 };

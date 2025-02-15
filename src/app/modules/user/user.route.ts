@@ -1,6 +1,7 @@
 import express from 'express';
 import auth from '../../middlewares/auth';
 import { userController } from './user.controller';
+import { USER_ROLE } from './user.constant';
 
 const router = express.Router();
 
@@ -14,7 +15,8 @@ const router = express.Router();
 //   UserControllers.createStudent,
 // );
 // router.patch('/admin/users/:userId/block', auth('admin'),
-router.patch('/users/:userId/block', auth('admin'), userController.blockUser)
+router.get('/', auth(USER_ROLE.admin), userController.getAllUser)
+router.patch('/:userId/block', auth(USER_ROLE.admin), userController.blockUser)
 // router.delete('/blogs/:id', auth('admin'), BlogControllers.deleteBlogByAdmin);
 
 export const userRoutes = router;
