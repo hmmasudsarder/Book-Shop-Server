@@ -1,4 +1,4 @@
-# 📚 Book Store API - Assignment 2
+# 📚 Book Store API - Assignment 4
 
 This project is a RESTful API built with **Express** and **TypeScript** to manage a book store. It uses **MongoDB** with Mongoose for data storage and retrieval.
 
